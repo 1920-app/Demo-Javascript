@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Gestion des événements</title>
+    <link href="../prism/prism.css" rel="stylesheet" />  
+    <script src="../prism/prism.js"></script>
+    <script src="./events-source.js"></script>
+  </head>
+  <body>
+    <h1>Gestion des événements</h1>
+    <h2>Code source</h2>
+    <div>
+      <p>Le code source suivant va montrer les exemples d'événements suivants :
+      <code>onClick</code>, <code>onFocus</code>, <code>onMouseOver</code>.</p>
+    </div>
+    <pre>
+    <code class="lang-markup">
+&lt;!-- Début du fichier HTML -->
+&lt;label onMouseOver="elementMouseOver(this);">Exemple : &lt;/label>
+&lt;input type="text" value="Exemple" name="exemple" id="exemple" onFocus="elementFocus(this);" />&lt;br />
+&lt;button onClick="elementClick(this);">Click me!&lt;/button>
+&lt;!-- Fin du fichier HTML -->
+
+&lt;script>
+// Début des scripts Javascript
+function elementMouseOver(element) {
+ element.style.color = getRandomColor();
+}
+
+function elementFocus(element) {
+  element.value += "Bonjour ! ";
+}
+
+function elementClick(element) {
+  alert(element.innerHTML);
+}
+
+function getRandomColor() {
+  let letters = '0123456789ABCDEF';
+  let color = '#';
+  for (let i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
+&lt;/script>
+    </code>
+    </pre>
+    </pre>
+    <h2>Résultats</h2>
+    <label onMouseOver="elementMouseOver(this);">Exemple : </label>
+    <input type="text" value="Exemple" name="exemple" id="exemple"
+                                                      onFocus="elementFocus(this);" /><br />
+    <button onClick="elementClick(this);">Click me!</button>
+  </body>
+</html>

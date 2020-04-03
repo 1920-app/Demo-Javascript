@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Structures de contrôle</title>
+    <script src="./controls-source.js"></script>
+    <link href="../prism/prism.css" rel="stylesheet" />  
+    <script src="../prism/prism.js"></script>
+  </head>
+  <body>
+    <h1>Structures de contrôle</h1>
+    <h2>Structures conditionnelles</h2>
+    <h3>Les conditions avec <code>if</code></h3>
+    <div>
+      <p>Rien de nouveau avec les structures conditionnelles utilisant le
+      mot-clé <code>if</code>. L'exemple suivant montre un script écrit en
+      Javascript utilisant une telle structure conditionnelle.</p>
+      <pre>
+      <code class="lang-js">
+let a = 2;
+let b = 3;
+if (a < b) {
+  // La concaténation de chaînes de caractères et de variables se fait avec le symbole +
+  // La fonction 'alert' va afficher une fenêtre pop-up avec le message
+  alert("Le minimum de " + a + " et " + b + " est " + a);
+} else if (a > b) {
+  alert("Le minimum de " + a + " et " + b + " est " + b);
+} else {
+  alert("Les deux valeurs sont égales");
+}
+      </code>
+      </pre>
+      <button onclick="ifDemo();">Exécuter le code !</button>
+    </div>
+    <h3>Les conditions avec <code>switch</code></h3>
+    <div>
+      <p>L'instruction <code>switch</code> utilise un <b>test d'égalité strict
+        (===)</b>. Son fonctionnement est similaire à ce que l'on a pu voir en
+      Java.</p>
+      <pre>
+      <code class="lang-js">
+switch(my_var) {
+  case 1:
+    // On fait quelque chose
+    break;
+  case 2:
+    // On fait autre chose
+    break;
+  // case n:
+  default:
+    // On fait quelque chose si aucun des tests précédents n'est passé
+    break;
+}
+      </code>
+      </pre>
+    </div>
+    <h2>Structures itératives</h2>
+    <h3>Les boucles avec <code>for</code></h3>
+    <div>
+      <p>En Javascript, on retrouve la distinction entre une boucle
+      <code>for</code> et une boucle <code>for each</code>. Cependant, la
+      boucle <code>for each</code> a un comportement très particulier,
+      différent de ce que l'on a connu jusqu'à présent. En effet, la boucle
+      <code>for each</code> est utilisée pour parcourir des "propriétés
+      énumérables mais qui ne sont pas des symboles" (voir la  <a
+        href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Instructions/for...in"
+        target="_blank">documentation proposée par Mozilla</a>.) On va donc
+      avoir des exemples d'tuilisation de boucles <code>for each</code> lorsque
+      l'on va introduire les tableaux associatifs.
+
+      <pre>
+      <code class="lang-js">
+// Boucle for 'simple'
+// Le mot-clé 'let' dans la boucle est une bonne pratique :
+// On définit clairement la portée de la variable de boucle que l'on crée
+let message = "";
+for (let i = 0; i < 10; i++) {
+  message += i + "\n";
+}
+alert(message);
+
+// Boucle foreach qui a un fonctionnement TRÈS spécifique
+for (let element in tableau) {
+  // Faire quelque chose
+}
+     </code>
+      </pre>
+      <button onclick="forDemo();">Exécuter le code !</button>
+    </div>
+
+    <h3>Les boucles avec <code>while</code></h3>
+    <div>
+      <p>Les boucles <code>while</code> et <code>do while</code> sont
+      identiques à celles que l'on connaît déjà en Java et PHP. La syntaxe est
+      aussi identique.</p>
+      <pre>
+      <code class="lang-js">
+while (condition) {
+  // Faire quelque chose
+}
+
+do {
+  // Fair quelque chose
+} while (condition);
+      </code>
+      </pre>
+    </div>
+  </body>
+</html>

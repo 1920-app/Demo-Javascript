@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Insertion d'éléments dans le DOM</title>
+    <script src="./insertion-source.js"></script>
+    <link href="../prism/prism.css" rel="stylesheet" />  
+    <script src="../prism/prism.js"></script>
+  </head>
+  <body>
+    <h1>Insertion d'éléments dans le DOM</h1>
+    <h2>Code source</h2>
+    <pre>
+    <code class="lang-markup">
+&lt;form id="form" action="#" onsubmit="showErrorMessage();">
+  &lt;label for="username">Username :&lt;/label>
+  &lt;input type="text" value="" name="username" id="username"/>&lt;br/>
+  &lt;label for="password">Password: &lt;/label>
+  &lt;input type="text" value="" name="password" id="password"/>&lt;br />
+  &lt;input type="submit" value="Sign in" />
+&lt;/form>
+
+&lt;script>
+function showErrorMessage() {
+  let errorDiv = document.createElement("div");
+  errorDiv.appendChild(
+    // On ajoute un élément 'p' dans notre 'div'
+    document.createElement("p").appendChild(
+      // On ajoute le texte suivant à notre élément 'p'
+      document.createTextNode("Une erreur s'est produite lors du traitement du formulaire.")
+    )
+  );
+  let formulaire = document.getElementById("form");
+  formulaire.appendChild(errorDiv);
+}
+&lt;/script>
+    </code>
+    </pre>
+    <h2>Résultats</h2>
+    <form id="form" action="#" onsubmit="showErrorMessage();">
+      <label for="username">Username :</label>
+      <input type="text" value="" name="username" id="username"/><br/>
+      <label for="password">Password: </label>
+      <input type="text" value="" name="password" id="password"/><br />
+      <input type="submit" value="Sign in" />
+  </body>
+</html>

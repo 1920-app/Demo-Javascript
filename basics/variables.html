@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Éléments de base</title>
+    <script src="./variables-source.js"></script>
+    <link href="../prism/prism.css" rel="stylesheet" />  
+    <script src="../prism/prism.js"></script>
+  </head>
+  <body>
+    <h1>Éléments de base</h1>
+    <h2>Déclaration de variables</h2>
+    <div>
+      <p>En Javascript, la convention de nommage des variables indique qu'il faut
+      utiliser des <em>underscores</em> entre chaque mot du nom (snake case).</p>
+      <pre>
+      <code class="language-js">
+// Une variable déclarée avec 'var' a une portée de fonction
+var une_variable = "Bonjour";
+
+// Une variable déclarée avec 'let' a une portée de bloc
+let une_autre_variable = 1;
+
+// Une variable déclarée avec 'const' a une portée de bloc
+// Pour la rendre globale, il faut la déclarer en dehors de toute fonction
+const une_derniere_variable = true;
+      </code>      
+      </pre>
+
+      <p>La différence entre <code>var</code> et <code>let</code> sera illustrée
+      plus tard, lorsque nous introduirons le concept de fonction.</p>
+    </div>
+
+
+    <h2>Opérations algébriques et booléennes</h2>
+    <div>
+      <p>On retrouve les opérations algébriques et booléennes que l'on a
+      l'habitude de rencontrer en Java ou en PHP.</p>
+      <p>En particulier, on retrouve aussi <code>==</code> et <code>===</code>,
+      avec la même signification qu'en PHP.</p>
+      <pre>
+      <code class="lang-js">
+var une_variable = 1;
+var une_autre_variable = "1";
+une_variable == une_autre_variable;  // Ce test est vrai
+une_variable === une_autre_variable; // Ce test est faux
+      </code>
+      </pre>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <script src="./tableaux-source.js"></script>
+    <link href="../prism/prism.css" rel="stylesheet" />  
+    <script src="../prism/prism.js"></script>
+    <title>Tableaux</title>
+  </head>
+  <body>
+    <h1>Tableaux</h1>
+    <h2>Tableaux indexés</h2>
+    <div>
+      <p>Comme en PHP, les tableaux indexés en Javascript peuvent contenir des
+      éléments de type différent. Et il est bien évidemment possible de créer
+      des tableaux de plusieurs dimensions (c'est-à-dire, où un élément du
+      tableau est lui-même un tableau).
+      </p>
+      <pre>
+      <code class="lang-js">
+  let tableau = new Array(1, 2, "Bonjour", true);
+
+  alert(tableau[0]);
+  alert(tableau.length);
+
+  let message = "";
+  for (let i = 0; i < tableau.length; i++) {
+    message += tableau[i] + " ";
+  }
+
+  // Autre méthode, utilisant une "lambda expression"
+  message = "";
+  tableau.forEach(element => message += element + " ");
+  alert(message);
+      </code>
+      </pre>
+      <button onclick="tableauDemo();">Exécuter le code !</button>
+    </div>
+    <h2>Tableaux associatifs</h2>
+    <div>
+      <p>Mêmes remarques pour les tableaux associatifs (ou dictionnaires).
+      <b>Attention:</b> En Javascript, les tableaux associatifs sont de type
+      <code>object</code>. Une conséquence est que ces types de tableaux n'ont
+      pas de taille, et donc qu'il est impossible d'utiliser le bout de code
+      suivant <code>dictionnaire.length</code>.</p>
+      <pre>
+      <code class="lang-js">
+// Première solution pour la création d'un dictionnaire
+// On passe obligatoirement par la création d'un 'tableau' vide
+let dictionnaire = [];
+dictionnaire["id"] = 1;
+dictionnaire["first_name"] = "Stan";
+dictionnaire["last_name"] = "Marsh";
+
+alert("Bonjour " + dictionnaire["first_name"] + " " + dictionnaire["last_name"]);
+
+// On ajoute un élément à la clé "quotes"
+dictionnaire["quotes"] = new Array("Cartman, you're God damned stupid it's incredible",
+  "You bastards!");
+
+let message = "";
+for (let cle in dictionnaire) {
+  message += cle + ": " + dictionnaire[cle] + "\n";
+}
+alert(message);
+      </code>
+      </pre>
+      <button onclick="dictionnaireDemo();">Exécuter le code !</button>
+    </div>
+
+    <h2>JSON</h2>
+    <div>
+      <p>JSON signifie <em>Javascript Object Notation</em>, et est un standard
+      souvent utilisé pour passer des informations sur le Web. La syntaxe est
+      encore une fois un peu différente, mais peut-être plus facile à
+      utiliser ? Avec JSON, on peut créer des <em>objects</em> (équivalent à un
+      dictionnaire) ou des <em>arrays</em> (équivalent à un tableau). Les
+      exemples suivants montrent la syntaxe à utiliser :</p>
+      <pre>
+      <code class="lang-js">
+  // Création d'un JSON Object
+  // On note l'utilisation des { }
+  let jsonObject = {
+    id: 1,
+    first_name: "Stan",
+    last_name: "Marsh"
+  };
+
+
+  // Création d'un JSONArray contenant 4 objets JSON
+  let jsonArray = [
+    {
+      id: 1,
+      first_name: "Stan",
+      last_name: "Marsh"
+    },
+    {
+      id: 2,
+      first_name: "Randy",
+      last_name: "Marsh"
+    },
+    {
+      id: 3,
+      first_name: "Eric",
+      last_name: "Cartman"
+    },
+    {
+      id: 4,
+      first_name: "Kyle",
+      last_name: "Broflovski"
+    }
+  ];
+
+  // On remarque la notation utilisant un . pour les attributs d'un objet JSON
+  jsonArray.forEach(objet => alert(objet.id + " " + objet.first_name + " " + objet.last_name));
+  
+  // La fonction JSON.stringify() permet de transformer un JSON array/object en
+  // chaîne de caractère
+  alert(JSON.stringify(jsonObject));
+      </code>
+      </pre>
+      <button onclick="jsonDemo();">Exécuter le code !</button>
+    </div>
+  </body>
+</html>

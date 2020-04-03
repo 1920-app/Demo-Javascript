@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Fonctions</title>
+    <link href="../prism/prism.css" rel="stylesheet" />  
+    <script src="../prism/prism.js"></script>
+    <script src="fonctions-source.js"></script>
+  </head>
+  <body>
+    <h1>Fonctions</h1>
+    <h2>Code source</h2>
+    <div>
+      <p>Attention, la convention de nommage à respecter pour les noms de
+      fonction est le <b>camelCase</b> (et non plus le snake_case comme pour
+      les noms de variables).</p>
+    </div>
+    <pre>
+    <code class="lang-js">
+function checkForm() {
+  // Instructions utilisées pour récupérer les données d'un formulaire
+  let username = document.forms["registration"]["username"].value;
+  let password = document.forms["registration"]["password"].value;
+  let confirm_password = document.forms["registration"]["confirm_password"].value;
+  checkUsername(username);
+  checkPassword(password, confirm_password);
+  if (checkUsername(username) && checkPassword(password, confirm_password)) {
+    alert("Success");
+  } else {
+    alert("Error");
+  }
+}
+
+function checkUsername(username) {
+  // On teste si username est une chaîne de caractère vide
+  // Le symbole !== est l'opposé de ===
+  return username.trim() !== "";
+}
+
+function checkPassword(password, confirm_password) {
+  if (password != confirm_password) return false;
+  if (password.length < 8) return false;
+  // On pourrait ensuite implémenter des tests plus complexes
+  return true;
+}
+    </code>
+    </pre>
+    <h2>Résultats</h2>
+    <form name="registration" action="" method="" accept-charset="utf-8">
+      <label for="username">User name: 
+      </label><input type="text" name="username" id="username" value=""><br />
+      <label for="password">Password: </label>
+      <input type="text" name="password" id="password" value=""><br/>
+      <label for="confirm_password">Confirm password: </label>
+      <input type="text" name="confirm_password" id="confirm_password"
+                                                 value=""><br/>
+      <input type="submit" name="send" id="send" value="Send"
+                                                 onclick="checkForm()";>
+    </form>
+  </body>
+</html>

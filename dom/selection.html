@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Sélection et modification d'éléments dans le DOM</title>
+    <script src="./selection-source.js"></script>
+    <link href="../prism/prism.css" rel="stylesheet" />  
+    <script src="../prism/prism.js"></script>
+  </head>
+  <body>
+    <h1>Sélection et modification d'éléments dans le DOM</h1>
+    <h2>Sélection par ID</h2>
+    <h3>Code source</h3>
+    <pre>
+<code class="lang-js">
+function selectionParId() {
+  // La méthode getElementById permet de récupérer un élément du DOM par son ID
+  let bouton = document.getElementById("submit_button");
+  // On peut ainsi, par exemple, changer le texte affiché par ce bouton
+  if (bouton.innerHTML !== "Texte changé !") {
+    bouton.innerHTML = "Texte changé !";
+  } else { 
+    bouton.innerHTML = "Autre texte changé !"; 
+  }
+}
+</code>
+    </pre>
+    <h3>Résultats</h3>
+    <button id="submit_button" onclick="selectionParId();">Mon bouton "submit"</button>
+    <h2>Sélection par classe</h2>
+    <pre>
+<code class="lang-js">
+// La méthode getElementsByClassName() permet de récupérer une sorte de tableau
+// Attention à la syntaxe : elementS <--- il y a un 's'
+let oddItems = document.getElementsByClassName("odd_items");
+
+// Une syntaxe un peu particulière pour parcourir les éléments
+// [].forEach.call(oddItems, item => item.style.color = (item.style.color != "red") ? "red" : "blue");
+// Une syntaxe équivalente :
+for (let i = 0; i < oddItems.length; i++) {
+  oddItems.item(i).style.color = (oddItems.item(i).style.color != "red") ? "red" : "blue";
+}
+</code>
+    </pre>
+    <h3>Code source</h3>
+    <ul>
+      <li class="odd_items">1</li>
+      <li>2</li>
+      <li class="odd_items">3</li>
+      <li>4</li>
+      <li class="odd_items">5</li>
+      <li>6</li>
+    </ul>
+    <button onclick="selectionParClasse();">Sélection par classe</button>
+    <h2>Sélection par tag</h2>
+    <h3>Code source</h3>
+    <pre>
+<code class="lang-js">
+function selectionMixte() {
+  let boldInParagraphs = document.getElementsByTagName("p");
+
+  for (let i = 0; i < boldInParagraphs.length; i++) {
+    let words = boldInParagraphs.item(i).getElementsByTagName("b");
+    for (let j = 0; j < words.length; j++) {
+      words.item(j).innerHTML = "&lt;u>gras et souligné&lt;/u>";
+    }
+  }
+
+  // Autre syntaxe utilisant forEach et les lambdas
+  // [].forEach.call(boldInParagraphs, 
+  //   item => [].forEach.call(item.getElementsByTagName("b"), 
+  //     word => word.innerHTML = "<u>gras et souligné</u>")
+  // );
+}
+</code>
+    </pre>
+    <h3>Résultats</h3>
+    <div>
+      Ceci est du texte se trouvant ne se trouvant pas dans une balise
+      <code>p</code>. Ce texte possède quelques mots écrits en <b>gras</b> ici,
+      et d'autres mots en <b>gras</b> par là.
+
+      <p>Ceci est un exemple de texte avec du texte en <b>gras</b> ici, mais
+      aussi du texte en <b>gras</b> là. Enfin, je vais rajouter encore quelques
+      petits bouts de texte en <b>gras</b> ici.</p>
+      <button onClick="selectionParTag()";>Sélection par tag</button>
+      <button onClick="selectionMixte();">Sélection mixte</button>
+    </div>
+  </body>
+</html>
