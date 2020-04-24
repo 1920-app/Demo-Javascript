@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Téléchargement de fichiers</title>
+    <link href="../prism/prism.css" rel="stylesheet" />  
+    <script src="../prism/prism.js"></script>
+  </head>
+  <body onload="downloadFile();">
+    <h1>Téléchargement de fichiers</h1>
+    <a hidden id="downloadId" href="http://localhost/JS-Demo/faq/image.jpg"
+                              download>Lien vers l'image</a>
+    <pre>
+    <code class="lang-markup">
+    &lt;h1>Téléchargement de fichiers&lt;/h1>
+    &lt;a hidden id="downloadId" href="http://localhost/JS-Demo/faq/image.jpg"
+                              download>Lien vers l'image&lt;/a>
+    &lt;script>
+    function downloadFile() {
+      file = document.getElementById('downloadId');
+      file.click();
+    }
+    &lt;/script>
+    </code>
+    </pre>
+  </body>
+  <script>
+    function downloadFile() {
+      file = document.getElementById('downloadId');
+      file.click();
+    }
+  </script>
+</html>

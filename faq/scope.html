@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Portée des variables</title>
+    <link href="../prism/prism.css" rel="stylesheet" />  
+    <script src="../prism/prism.js"></script>
+  </head>
+  <body>
+    <h1>Portée des variables</h1>
+    <div>
+      <p>Pour rappel, il existe trois mots-clés permettant de déclarer des
+      variables en Javascript :
+      <ul>
+        <li><code>var</code>, qui déclare une variable avec une portée de
+        fonction ;</li>
+        <li><code>let</code>, qui déclare une variable avec une portée de
+        bloc ;</li>
+        <li><code>const</code>, qui déclare une constante avec une portée
+        de bloc.</li>
+      </ul>
+      </p>
+      <p>Le code suivant représente le contenu d'un fichier Javascript
+      quelconque :</p>
+    </div>
+    <pre>
+    <code class="lang-javascript">
+// Variables globales
+var variable1 = "Bonjour";
+let variable2 = "Hello";
+const variable3 = "Hola";
+
+function test() {
+  console.log(variable1);   // Affiche "Bonjour"
+  console.log(variable2);   // Affiche "Hello"
+  console.log(variable3);   // Affiche "Hola"
+}
+
+function test2() {
+  var variable4 = "Au revoir";
+  if (1 === 1) {
+    let variable5 = "Goodbye";
+    console.log(variable4);     // Affiche "Au revoir"
+    console.log(variable5);     // Affiche "Goodbye"
+  }
+  console.log(variable4);       // Affiche "Au revoir"
+  console.log(variable5);       // Provoque une erreur parce que variable5 n'a qu'une portée de bloc et n'existe qu'à l'intérieur du bloc 'if'
+}
+test();
+test2();
+console.log(variable4);         // Provoque une erreur parce que variable4 n'a qu'une portée de fonction et n'existe qu'à l'intérieur de la fonction 'test2'
+    </code>
+    </pre>
+    <script>
+// Variables globales
+var variable1 = "Bonjour";
+let variable2 = "Hello";
+const variable3 = "Hola";
+
+function test() {
+  console.log(variable1);
+  console.log(variable2);
+  console.log(variable3);
+}
+
+function test2() {
+  var variable4 = "Au revoir";
+  if (1 === 1) {
+    let variable5 = "Goodbye";
+    console.log(variable4);
+  }
+  var variable6 = variable2 + variable5;
+  console.log(variable4);
+  console.log(variable5);
+  console.log(variable6);
+}
+test();
+test2();
+console.log(variable4);
+    </script>
+  </body>
+
+</html>
